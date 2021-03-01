@@ -1,0 +1,20 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  upload_to_s3:
+    name: Upload Repo Contents to S3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+      - name: Deploy translation package to S3 bucket
+        run: aws s3 sync ./ s3://mozfest-book --delete --acl public-read
