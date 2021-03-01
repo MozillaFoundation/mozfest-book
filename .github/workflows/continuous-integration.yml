@@ -17,4 +17,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-1
       - name: Deploy translation package to S3 bucket
-        run: aws s3 sync ./ s3://mozfest-book --delete --acl public-read
+        run: aws s3 sync public/ s3://mozfest-book --delete --acl public-read
