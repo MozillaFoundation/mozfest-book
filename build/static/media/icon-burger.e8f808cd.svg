@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>icon-burger</title>
-  <g id="icon-burger" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <rect id="Rectangle" fill="currentColor" x="2.5" y="11" width="20" height="3"></rect>
-    <rect id="Rectangle" fill="currentColor" x="2.5" y="4.5" width="20" height="3"></rect>
-    <rect id="Rectangle" fill="currentColor" x="2.5" y="17.5" width="20" height="3"></rect>
-  </g>
-</svg>

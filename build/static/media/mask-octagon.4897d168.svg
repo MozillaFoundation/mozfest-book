@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>mask-octagon</title>
-    <g id="mask-octagon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="path-1" fill="#202020" fill-rule="nonzero" points="40 0 68.2842712 11.7157288 80 40 68.2842712 68.2842712 40 80 11.7157288 68.2842712 0 40 11.7157288 11.7157288"></polygon>
-    </g>
-</svg>
