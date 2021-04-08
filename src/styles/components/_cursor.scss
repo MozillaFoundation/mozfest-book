@@ -1,0 +1,47 @@
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  background-color: var(--main-text-color);
+  z-index: 1000;
+  pointer-events: none;
+
+  transition: transform 250ms ease;
+  transform: translate3d(-50%, -50%, 0) scale(0);
+
+  mask-image: url($path-assets + "/mask-octagon.svg");
+  mask-size: 100%;
+
+  &.is-visible {
+    cursor: none;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .cursor__pointer {
+    width: rem-calc(33);
+    height: rem-calc(33);
+    color: white;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      color: currentColor;
+    }
+  }
+}
+
+body.has-custom-cursor {
+  cursor: none;
+}
+
+html[data-darkmode="true"] {
+  .cursor .cursor__pointer {
+    color: var(--color-black);
+  }
+}

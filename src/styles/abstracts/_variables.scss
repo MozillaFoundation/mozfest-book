@@ -1,0 +1,31 @@
+:root {
+  --color-black: #202020;
+  --color-green: #54ffbd;
+  --color-red: #ff4f5e;
+  --color-yellow: #fff44f;
+  --color-blue: #006eff;
+  --color-pink: #ffb4db;
+  --color-purple: #a07dff;
+  --color-pistache: #c1e0d9;
+  --main-text-color: #202020;
+  --main-background-color: white;
+}
+
+$path-assets: "~assets";
+
+/** -- TYPOGRAPHY  -------------------------------------------------------- */
+$base-font-size: 16;
+
+/** -- GRID --------------------------------------------------------------- */
+$gutter-xs: 20px;
+$gutter-s: 16px;
+$gutter-m: 20px;
+
+$margin-xs: rem-calc(20);
+$margin-s: rem-calc(65);
+$margin-m: rem-calc(130);
+
+/** -- DIMENSIONS --------------------------------------------------------- */
+$spacing-xs: 10px;
+$spacing-s: 20px;
+$spacing-m: 40px;

@@ -1,0 +1,326 @@
+// -- Index Panel ------------------------------------------------------- //
+.index-panel {
+  position: relative;
+  margin-left: auto;
+  width: 100%;
+}
+
+.index-panel__trigger {
+  border-bottom: 1px solid currentColor;
+  text-align: left;
+  z-index: 10;
+  position: relative;
+  cursor: pointer;
+
+  font-size: rem-calc(16);
+
+  padding-top: rem-calc(7);
+  padding-bottom: rem-calc(7);
+
+  @include view-s-up() {
+    padding-top: rem-calc(9);
+    padding-bottom: rem-calc(9);
+  }
+}
+
+.index-trigger__current {
+  overflow: hidden;
+  position: relative;
+
+  .index-trigger__wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  .index-trigger__chapter-nr {
+    width: span(1 of 6, $susy);
+  }
+
+  .index-trigger__chapter-title {
+    flex: 1;
+    padding-right: rem-calc(30);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @include view-s-up() {
+    .index-trigger__chapter-nr {
+      width: rem-calc(30);
+    }
+    .index-trigger__chapter-title {
+      padding-right: rem-calc(100);
+    }
+  }
+}
+
+.index-panel__layer {
+  text-align: left;
+  position: absolute;
+  background-color: var(--main-background-color);
+  height: calc(100vh - 60px);
+  display: flex;
+  align-items: flex-start;
+  opacity: 0;
+  overflow: hidden;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  padding-top: rem-calc(10);
+  transform: translateY(-100%);
+  margin-left: -$margin-xs;
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  @include view-s-up() {
+    height: 100vh;
+    top: -19px;
+    padding-top: rem-calc(60);
+    width: calc(100% + #{$margin-s} + #{gutter()});
+  }
+
+  @include view-m-up() {
+    padding-top: rem-calc(60);
+    top: -14px;
+
+    margin-left: -gutter($susy-m);
+    width: calc(100% + #{$margin-m} + #{gutter($susy-m)});
+    margin-right: calc(0% - #{$margin-m});
+  }
+}
+
+.index-panel__list {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  list-style-type: none;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+
+  padding-top: rem-calc(54);
+  padding-bottom: rem-calc(100);
+
+  span,
+  h3 {
+    margin-top: 0;
+  }
+
+  span {
+    @include font-body();
+    text-transform: uppercase;
+  }
+  h3 {
+    @include font-heading();
+    margin-top: rem-calc(-1);
+  }
+
+  li {
+    width: 100%;
+    position: relative;
+    padding-left: $margin-xs;
+    padding-right: $margin-xs;
+    padding-bottom: rem-calc(15);
+    overflow: hidden;
+    margin-bottom: rem-calc(11);
+
+    button {
+      position: relative;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    figure {
+      pointer-events: none;
+      display: block;
+      position: absolute;
+      width: 44px;
+      height: 36px;
+      left: 0;
+      top: 1.5em;
+      opacity: 0;
+
+      svg {
+        path {
+          fill: currentColor;
+        }
+      }
+    }
+
+    h3 {
+      max-width: 85%;
+      margin-top: rem-calc(1);
+    }
+  }
+
+  @include view-s-up() {
+    padding-top: rem-calc(50);
+    li {
+      padding-left: rem-calc(60);
+      padding-bottom: 0;
+      padding-right: $margin-s;
+      margin-bottom: rem-calc(30);
+
+      h3 {
+        max-width: 100%;
+        font-size: rem-calc(32);
+        margin-top: rem-calc(4);
+      }
+    }
+  }
+  @include view-m-up() {
+    padding-top: rem-calc(65);
+
+    li {
+      padding-left: rem-calc(70);
+      padding-right: $margin-m;
+      margin-bottom: rem-calc(37);
+
+      h3 {
+        font-size: rem-calc(48);
+        margin-top: rem-calc(7);
+      }
+    }
+  }
+}
+
+// button hand transition
+@mixin row-is-active() {
+  button {
+    > div {
+      transform: translateX(60px);
+    }
+    > figure {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+.index-panel__list li {
+  button {
+    > figure {
+      transform: translateX(-160%);
+
+      transition-property: opacity, transform;
+      transition-duration: 250ms, 350ms;
+      transition-delay: 0ms, 0ms;
+      transition-timing-function: ease, cubic-bezier(0.22, 1.38, 0.64, 1);
+    }
+
+    > div {
+      transform: translateX(0px);
+
+      transition-property: transform;
+      transition-duration: 300ms;
+      transition-timing-function: cubic-bezier(0.22, 1.38, 0.64, 1);
+      transition-delay: 75ms;
+    }
+  }
+
+  &.is-active {
+    @include row-is-active();
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      @include row-is-active();
+    }
+  }
+}
+
+// index transition
+.toggle-button,
+.index-trigger__wrapper {
+  &.item-enter {
+    position: absolute;
+    top: 0;
+    transform: translateY(100%);
+  }
+  &.item-enter-active {
+    transform: translateY(0%);
+    transition: transform 250ms ease;
+  }
+
+  &.item-exit {
+    transform: translateY(0%);
+  }
+  &.item-exit-active {
+    transform: translateY(-100%);
+    transition: transform 250ms ease;
+  }
+}
+
+// -- Index Trigger Progress ------------------------------------------------------ //
+.index-trigger__progress {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+}
+
+.index-trigger__toggle {
+  position: absolute;
+  right: rem-calc(-4);
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 250px;
+}
+
+.toggle-button {
+  display: inline-flex;
+  align-items: center;
+  flex-grow: 0;
+
+  font-size: rem-calc(12);
+  text-transform: uppercase;
+  span {
+    display: none;
+    white-space: nowrap;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.is-enabled {
+    figure {
+      transform: rotate(180deg);
+    }
+  }
+  @include view-s-up() {
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      display: inline-block;
+    }
+  }
+}
+
+.scroll-progress {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .scroll-progress__bar {
+    width: 100%;
+    transition: transform 250ms ease;
+    transform-origin: left;
+    transform: scaleX(0);
+    height: 100%;
+    background-color: var(--theme-color);
+  }
+}

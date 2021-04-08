@@ -1,0 +1,66 @@
+// remove tap highlight
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+     * Make all elements from the DOM inherit from the parent box-sizing
+     * Since `*` has a specificity of 0, it does not override the `html` value
+     * making all elements inheriting from the root box-sizing value
+     * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+     */
+*,
+*:not(img),
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-style: normal;
+  margin: 0;
+  font-size: 1em;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  text-align: left;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}

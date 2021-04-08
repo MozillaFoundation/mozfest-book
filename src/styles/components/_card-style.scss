@@ -1,0 +1,23 @@
+.card-style {
+  background-color: var(--main-background-color);
+  border: 2px solid currentColor;
+  border-top: none;
+  border-left: none;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    transition: box-shadow 250ms ease;
+    box-shadow: 10px 10px 0 0 currentColor, 1px 1px 0 1px currentColor;
+  }
+
+  @include view-m-up() {
+    &:after {
+      box-shadow: 14px 14px 0 0 currentColor, 1px 1px 0 1px currentColor;
+    }
+  }
+}

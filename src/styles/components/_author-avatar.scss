@@ -1,0 +1,28 @@
+.author-avatar {
+  @include aspect-ratio(1 1);
+  position: relative;
+  margin: 0 auto;
+  display: block;
+
+  figure {
+    @include cover-absolute();
+    mask-image: url($path-assets + "/mask-octagon.svg");
+    mask-size: 100%;
+    mask-repeat: none;
+    background-color: var(--main-background-color);
+
+    transition: background-color 250ms ease;
+
+    div {
+      @include cover-absolute();
+      background-size: 100%;
+    }
+
+    &:hover {
+      background-color: var(--theme-color);
+      div {
+        mix-blend-mode: multiply;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.component--text-scaling {
+  .scaling-text {
+    position: relative;
+    @include font-body-serif-m();
+    line-height: 1.153;
+    font-style: italic;
+  }
+
+  @include view-s-up() {
+    .scaling-text {
+      width: span(10 of 12, $susy-m);
+      margin-left: auto;
+      margin-right: span(1 wide of 12, $susy-m);
+    }
+
+    .scaling-text__normal,
+    .scaling-text__scaled {
+      display: block;
+      position: absolute;
+    }
+
+    .scaling-text__text {
+      transform-origin: top right;
+    }
+
+    // helpers to determine the scale styles
+    .scaling-text__normal {
+      width: 100%;
+    }
+    .scaling-text__scaled {
+      width: span(7 of 10, $susy-m);
+    }
+  }
+}

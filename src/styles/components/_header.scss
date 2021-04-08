@@ -1,0 +1,125 @@
+.app-header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+
+// -- Nav positioning --------------------------------------- //
+.app-header > .book-chapters-nav {
+  position: absolute;
+  top: 50vh;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: none;
+  width: 100%;
+  pointer-events: none;
+
+  @include view-s-up() {
+    display: block;
+    top: 0;
+    height: 100vh;
+    transform: none;
+
+    > nav {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .book-chapters-nav__close {
+    position: absolute;
+    right: rem-calc(66);
+    top: 4vh;
+    display: block;
+    display: none;
+    pointer-events: all;
+
+    button {
+      width: 50px;
+      height: 50px;
+    }
+
+    button {
+      margin-left: auto;
+      background-color: var(--color-black);
+      top: 0;
+      right: 0;
+
+      width: 60px;
+      height: 60px;
+
+      mask-image: url($path-assets + "/mask-enneagon.svg");
+      mask-size: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+
+      svg {
+        width: rem-calc(24);
+        height: rem-calc(24);
+        color: currentColor;
+      }
+
+      @media (pointer: fine) {
+        display: none;
+      }
+    }
+  }
+
+  @include view-s-up() {
+    &.is-enabled {
+      .book-chapters-nav__close {
+        display: block;
+      }
+    }
+  }
+
+  @include view-m-up() {
+    .book-chapters-nav__close {
+      display: none;
+    }
+  }
+}
+
+// ------------------------------ //
+.overlay-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: rem-calc(10);
+  padding-bottom: rem-calc(60);
+  opacity: 0;
+  z-index: 100;
+
+  .overlay-menu__header {
+    min-height: rem-calc(70);
+    button {
+      position: absolute;
+      right: rem-calc(-6);
+      top: 0;
+    }
+  }
+
+  .overlay-menu__footer {
+    margin-top: rem-calc(85);
+  }
+}
+
+.icon-link {
+  display: flex;
+  text-decoration: none;
+  color: currentColor;
+  align-items: center;
+
+  padding-top: rem-calc(5);
+  padding-bottom: rem-calc(5);
+
+  margin-bottom: rem-calc(5);
+
+  figure {
+    margin-left: rem-calc(14);
+  }
+}

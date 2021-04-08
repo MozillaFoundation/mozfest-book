@@ -1,0 +1,19 @@
+.component--credits {
+  .credits {
+    width: 100%;
+    text-transform: uppercase;
+
+    @include font-body();
+    @include font-mono();
+
+    @include view-s-up() {
+      width: span(10 of 12);
+      margin: 0 auto;
+      column-count: 2;
+      column-gap: gutter($susy-s);
+    }
+    @include view-m-up() {
+      column-gap: gutter($susy-m);
+    }
+  }
+}

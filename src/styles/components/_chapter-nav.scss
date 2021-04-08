@@ -1,0 +1,60 @@
+.chapter-nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 40vh;
+  transform: translateY(-50%);
+  text-align: left;
+  padding: 20px;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    width: 100px;
+
+    .nav-menu-item {
+      position: relative;
+      display: block;
+      height: 8vh;
+      padding-top: 10px;
+      color: var(--color-black);
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: width 0.5s ease;
+        width: 40px;
+        height: 1px;
+        background-color: black;
+      }
+
+      span,
+      h3 {
+        transform-origin: top left;
+      }
+
+      span {
+        position: absolute;
+        font-size: 70px;
+      }
+      h3 {
+        position: absolute;
+        font-size: 50px;
+        width: 50vw;
+        left: 100px;
+      }
+
+      &.is-active {
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @include view-s-up() {
+    display: block;
+  }
+}

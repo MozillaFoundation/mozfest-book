@@ -1,0 +1,214 @@
+// -- Dialogue Moment ---------------------------------------------- //
+.dialogue-moment {
+  margin-bottom: rem-calc(70);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  opacity: 0;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  &:nth-child(even) {
+    margin-left: auto;
+  }
+
+  .dialogue-moment__author {
+    flex-shrink: 0;
+    position: absolute;
+    width: rem-calc(50);
+  }
+
+  .dialogue-moment__avatar {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: 100%;
+
+    .dialogue-moment__avatar-label {
+      display: none;
+    }
+
+    @media (pointer: fine) {
+      .dialogue-moment__avatar-label {
+        margin-top: rem-calc(15);
+        left: 50%;
+        position: absolute;
+        cursor: none;
+        pointer-events: none;
+        display: block;
+
+        @include font-mono();
+        font-size: 18px;
+
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0;
+
+        transform: translateX(-50%);
+        transition-property: opacity;
+        transition-duration: 250ms;
+        transition-timing-function: ease;
+        backface-visibility: hidden;
+
+        span {
+          margin-top: 0.2em;
+          writing-mode: vertical-rl;
+          text-orientation: upright;
+          letter-spacing: -0.3em;
+        }
+      }
+
+      &:hover {
+        .dialogue-moment__avatar-label {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .dialogue-moment__body {
+    position: relative;
+    @include font-body();
+
+    @include view-s-down() {
+      font-size: rem-calc(16);
+    }
+    p {
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .dialogue-moment__body {
+    margin-left: span(1 wide of 6);
+    margin-right: 0;
+  }
+
+  &:nth-child(even) {
+    .dialogue-moment__loader {
+      right: 0;
+    }
+    .dialogue-moment__body {
+      margin-left: 0;
+      margin-right: span(1 wide of 6);
+    }
+  }
+
+  @include view-s-up() {
+    margin-bottom: rem-calc(80);
+
+    width: span(8 of 12);
+
+    .dialogue-moment__author {
+      flex-shrink: 0;
+      width: span(1 wide of 8);
+      transform: translateX(-15px);
+    }
+
+    .dialogue-moment__body {
+      margin-left: span(1 wide of 8);
+      margin-right: 0;
+    }
+
+    &:nth-child(even) {
+      .dialogue-moment__author {
+        transform: translateX(15px);
+      }
+      .dialogue-moment__body {
+        margin-left: 0;
+        margin-right: span(1 wide of 8);
+      }
+    }
+  }
+
+  @include view-m-up() {
+    .dialogue-moment__author {
+      width: span(1 of 8);
+      transform: translateX(-20%);
+    }
+    &:nth-child(even) {
+      .dialogue-moment__author {
+        transform: translateX(20%);
+      }
+    }
+  }
+}
+
+// -- Dialogue Paragraph ---------------------------------------------- //
+.dialogue-paragraph {
+  position: relative;
+  margin-bottom: 1.2em;
+  &:last-child {
+    .dialogue-paragraph__text:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: rem-calc(-20);
+      width: 110%;
+      height: 1px;
+      background-color: currentColor;
+      max-width: 120px;
+    }
+    margin-bottom: 0;
+  }
+
+  @include view-m-up() {
+    margin-bottom: rem-calc(40);
+  }
+}
+
+.dialogue-paragraph__loader {
+  position: absolute;
+  top: 10px;
+  display: flex;
+
+  > div {
+    width: 8px;
+    height: 8px;
+    border-radius: 11px;
+    margin-right: 5px;
+    // margin: 0 10px;
+    background-color: currentColor;
+
+    animation: 750ms loader ease infinite;
+
+    &:nth-child(1) {
+      animation-delay: 0s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+  }
+}
+//
+
+@keyframes loader {
+  10% {
+    transform: translateY(-5px);
+  }
+  40% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.dialogue-moment {
+  &:nth-child(even) {
+    .dialogue-paragraph:first-child {
+      .dialogue-paragraph__loader {
+        right: 0;
+      }
+    }
+  }
+}

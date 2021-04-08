@@ -1,0 +1,27 @@
+.grow-image {
+  margin: 0 auto;
+
+  figure {
+    margin: 0 auto;
+    margin-left: -$spacing-s;
+    margin-right: -$spacing-s;
+  }
+
+  @include view-s-up() {
+    .grow-image__inner {
+      transform-origin: top;
+      transform: scale(0.5);
+    }
+
+    figure {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      width: span(12 of 12);
+
+      &.is-portrait {
+        width: span(8 of 12);
+      }
+    }
+  }
+}

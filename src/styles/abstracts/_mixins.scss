@@ -1,0 +1,163 @@
+/**
+ * Typeset allows you to include different type sizes on a mediaquery basis
+ * based on http://elijahmanor.com/nested-maps-for-typesetting-in-sass/
+ */
+@mixin typeset($type-size: body, $media-size: false) {
+  @each $key, $mq in $typeset-mq {
+    // get the media query index to select the
+    // right font size
+    $index: index($typeset-mq, $key $mq);
+    $type: map-get($typeset, $type-size);
+
+    // if a specific media size is requested we leave out
+    // the media query tag and return the size of the requested
+    @if $media-size {
+      // only if the sizes match, execute
+      @if $media-size == $key {
+        // set the font size, check if a font size is defined for the given media-query
+        @if $index <= length(map-get($type, "size")) {
+          $size: nth(map-get($type, "size"), $index);
+          font-size: $size;
+        } @else {
+          $size: nth(map-get($type, "size"), length(map-get($type, "size")));
+          font-size: $size;
+        }
+
+        //
+        @if map-has-key($type, line-height) {
+          @if $index <= length(map-get($type, "line-height")) {
+            $lineHeight: nth(map-get($type, "line-height"), $index);
+            line-height: $lineHeight;
+          } @else {
+            $lineHeight: nth(map-get($type, "line-height"), length(map-get($type, "line-height")));
+            line-height: $lineHeight;
+          }
+        }
+
+        @if map-has-key($type, letter-spacing) {
+          letter-spacing: map-get($type, letter-spacing);
+        }
+        @if map-has-key($type, family) {
+          font-family: map-get($type, family);
+        }
+      }
+
+      // otherwise walk through all sizes
+    } @else {
+      @media ($mq) {
+        // set the font size, check if a font size is defined for the given media-query
+        @if $index <= length(map-get($type, "size")) {
+          $size: nth(map-get($type, "size"), $index);
+          font-size: $size;
+        } @else {
+          $size: nth(map-get($type, "size"), length(map-get($type, "size")));
+          font-size: $size;
+        }
+
+        //
+        @if map-has-key($type, line-height) {
+          @if $index <= length(map-get($type, "line-height")) {
+            $lineHeight: nth(map-get($type, "line-height"), $index);
+            line-height: $lineHeight;
+          } @else {
+            $lineHeight: nth(map-get($type, "line-height"), length(map-get($type, "line-height")));
+            line-height: $lineHeight;
+          }
+        }
+
+        @if map-has-key($type, letter-spacing) {
+          letter-spacing: map-get($type, letter-spacing);
+        }
+        @if map-has-key($type, family) {
+          font-family: map-get($type, family);
+        }
+      }
+    }
+  }
+}
+
+@mixin aspect-ratio($ratio: 1 1) {
+  &::after {
+    content: "";
+    display: block;
+    padding-top: percentage(nth($ratio, 2) / nth($ratio, 1));
+  }
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+// https://css-tricks.com/snippets/css/fluid-typography/
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+@mixin ie-only {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin edge-only() {
+  @supports (-ms-ime-align: auto) or (-ms-accelerator: true) {
+    @content;
+  }
+}
+
+@mixin ie-and-edge() {
+  @include ie-only() {
+    @content;
+  }
+  @include edge-only() {
+    @content;
+  }
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin cover-absolute() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,84 @@
+.component {
+  margin-top: rem-calc(80);
+
+  &:first-child {
+    margin-top: 0;
+  }
+  .text p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.component--quote + .component {
+  margin-top: rem-calc(40);
+  @include view-s-up() {
+    margin-top: rem-calc(60);
+  }
+  @include view-m-up() {
+    margin-top: rem-calc(80);
+  }
+}
+
+.component--image + .component--text {
+  margin-top: rem-calc(90);
+
+  @include view-m-up() {
+    margin-top: rem-calc(120);
+  }
+}
+
+.component--text-images {
+  margin-top: 0;
+}
+
+.component--text-images + .component {
+  margin-top: rem-calc(90);
+
+  @include view-m-up() {
+    margin-top: rem-calc(120);
+  }
+}
+
+.component--credits {
+  margin-top: rem-calc(120);
+}
+
+.component--bullets,
+.component--bullets + .component--text {
+  margin-top: rem-calc(30);
+  @include view-s-up() {
+  }
+  @include view-m-up() {
+    margin-top: rem-calc(40);
+  }
+}
+
+.component + .component--text-scaling {
+  margin-top: rem-calc(40);
+
+  @include view-m-up() {
+    margin-top: rem-calc(80);
+  }
+}
+
+.component--text-images + .component--text-scaling {
+  margin-top: rem-calc(90);
+
+  @include view-m-up() {
+    margin-top: rem-calc(80);
+  }
+}
+
+.component--text-scaling + .component {
+  margin-top: rem-calc(40);
+
+  @include view-m-up() {
+    margin-top: rem-calc(80);
+  }
+}
+
+* + .component--text.has-aside {
+  @include view-m-up() {
+    margin-top: rem-calc(120);
+  }
+}

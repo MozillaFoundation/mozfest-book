@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>avatar-mask</title>
+    <defs>
+        <polygon id="path-1" points="40 0 68.2842712 11.7157288 80 40 68.2842712 68.2842712 40 80 11.7157288 68.2842712 0 40 11.7157288 11.7157288"></polygon>
+    </defs>
+    <g id="avatar-mask" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="mask" fill="#202020" xlink:href="#path-1"></use>
+    </g>
+</svg>

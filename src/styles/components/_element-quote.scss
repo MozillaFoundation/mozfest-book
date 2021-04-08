@@ -1,0 +1,93 @@
+.component--quote {
+  blockquote {
+    @include font-body-serif();
+
+    width: span(5 wide of 6, $susy);
+    margin-left: 0;
+    font-style: italic;
+
+    cite {
+      display: block;
+      font-style: normal;
+      text-transform: uppercase;
+      margin-top: rem-calc(20);
+
+      @include font-mono-s();
+    }
+  }
+
+  @include view-s-up() {
+    blockquote {
+      width: span(9 of 12, $susy-s);
+      margin-left: auto;
+      margin-right: auto;
+      cite {
+        margin-left: auto;
+        text-align: right;
+      }
+    }
+  }
+
+  @include view-m-up() {
+    blockquote {
+      width: span(7.5 of 12, $susy-m);
+      margin-left: span(2.5 of 12, $susy-m);
+    }
+  }
+}
+
+// -- quote - chapter 02 --------------------------------------------------- //
+// [data-chapter="02"] {
+//   .component--text {
+//     .text {
+//       font-family: $font-serif;
+//       p.intro {
+//         margin-left: 0;
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
+
+// -- quote - chapter 03 --------------------------------------------------- //
+
+// [data-chapter="03"] {
+//   .component--text {
+//     // .text {
+//     //   h2 {
+//     //     font-style: italic;
+//     //     text-align: center;
+//     //   }
+//     // }
+//     @include view-s-up() {
+//       .text {
+//         h2,
+//         p {
+//           width: span(10 of 12);
+//           margin-left: auto;
+//           margin-right: auto;
+//         }
+//         h2 {
+//           margin-bottom: rem-calc(60);
+//         }
+//       }
+//     }
+//     @include view-m-up() {
+//       .text {
+//         h2,
+//         p {
+//           width: span(8 of 12);
+//           margin-left: auto;
+//           margin-right: auto;
+//         }
+//         h2 {
+//           width: span(7 wide of 12);
+//           margin-top: rem-calc(120);
+//         }
+//         h2 + p {
+//           margin-top: rem-calc(60);
+//         }
+//       }
+//     }
+//   }
+// }

@@ -1,0 +1,318 @@
+.component--interviews {
+  position: relative;
+
+  padding-top: rem-calc(60);
+  padding-bottom: rem-calc(90);
+
+  @include font-mono-m();
+  line-height: 1.3;
+
+  &:last-child {
+    margin-bottom: rem-calc(-60);
+  }
+
+  @include view-s-up() {
+    padding-top: rem-calc(90);
+    padding-bottom: rem-calc(120);
+  }
+
+  @include view-m-up() {
+    padding-top: rem-calc(120);
+    padding-bottom: rem-calc(160);
+    font-size: rem-calc(18);
+
+    &:last-child {
+      margin-bottom: rem-calc(-160);
+    }
+  }
+
+  .interviews-header {
+    text-align: center;
+    margin-bottom: rem-calc(60);
+
+    span {
+      display: inline-block;
+      margin-bottom: rem-calc(25);
+    }
+
+    @include view-s-up() {
+      margin-bottom: rem-calc(90);
+      span {
+      }
+    }
+    @include view-m-up() {
+      margin-bottom: rem-calc(120);
+      span {
+        margin-bottom: rem-calc(60);
+      }
+    }
+  }
+
+  .interviews-header__title {
+    margin: 0 auto;
+    width: span(4 of 6);
+
+    svg {
+      width: 100%;
+      height: auto;
+      g {
+        polygon,
+        path {
+          fill: currentColor;
+        }
+      }
+    }
+
+    @include view-s-up() {
+      width: span(6 of 12);
+    }
+  }
+
+  .interviews-list {
+    @include view-s-up() {
+      margin-left: calc(0% - #{gutter($susy-s) / 2});
+      margin-right: calc(0% - #{gutter($susy-s) / 2});
+    }
+    @include view-m-up() {
+      margin-left: calc(0% - #{gutter($susy-m) / 2});
+      margin-right: calc(0% - #{gutter($susy-m) / 2});
+    }
+  }
+
+  .interviews-list__item {
+    margin-bottom: rem-calc(60);
+
+    @include view-s-up() {
+      width: 50%;
+      padding-left: gutter($susy-s) / 2;
+      padding-right: gutter($susy-s) / 2;
+      margin-bottom: rem-calc(90);
+
+      &:nth-child(2) {
+        margin-top: rem-calc(90);
+      }
+    }
+
+    @include view-m-up() {
+      padding-left: gutter($susy-m) / 2;
+      padding-right: gutter($susy-m) / 2;
+
+      margin-bottom: rem-calc(120);
+      &:nth-child(2) {
+        margin-top: rem-calc(120);
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .interview {
+    width: span(5 of 6);
+
+    &:nth-child(2) {
+      margin-left: auto;
+    }
+
+    .interview__meta {
+      margin-bottom: rem-calc(20);
+      display: flex;
+      .interview__avatar {
+        width: rem-calc(50);
+        pointer-events: none;
+        .author-avatar {
+          figure {
+            background-color: var(--color-pistache);
+          }
+          figure div {
+            mix-blend-mode: multiply;
+          }
+        }
+      }
+      span {
+        display: block;
+        font-size: 1em;
+      }
+    }
+
+    .interview__author {
+      margin-left: span(0.5);
+    }
+
+    .interview__link {
+      margin-top: 1.5em;
+      display: flex;
+      border-bottom: 1px solid currentColor;
+      padding-top: 0.3em;
+      padding-bottom: 0em;
+      text-decoration: none;
+      color: currentColor;
+
+      align-items: center;
+      justify-content: space-between;
+
+      svg {
+        width: 1.3rem;
+        margin-right: -1.2em;
+      }
+      > * {
+        margin-bottom: 0.2em;
+        transition: opacity 100ms ease;
+      }
+
+      @include view-m-up() {
+        margin-top: 1.75em;
+        svg {
+          width: 1.6rem;
+          margin-right: -0.8em;
+        }
+      }
+
+      @media (pointer: fine) {
+        &:hover {
+          > * {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    .interview__body {
+      &:after {
+        content: "";
+        display: block;
+        background-color: currentColor;
+        margin-top: 1.5em;
+        height: 1px;
+        width: 32vw;
+      }
+    }
+
+    @include view-s-up() {
+      &.is-short {
+        width: span(4 of 6);
+        margin-left: span(1 wide of 6);
+      }
+      &.has-margin {
+        margin-left: span(1 wide of 6);
+      }
+
+      .interview__body {
+        &:after {
+          width: 21vw;
+          margin-top: 1.2em;
+          max-width: 180px;
+        }
+      }
+    }
+
+    @include view-m-up() {
+      .interview__body {
+        &:after {
+          width: 12.5vw;
+        }
+      }
+
+      .interview__meta .interview__avatar {
+        width: rem-calc(80);
+        // mix-blend-mode: multiply;
+      }
+    }
+  }
+}
+
+//
+.interviews-list__item:nth-child(even) {
+  .interview {
+    margin-left: auto;
+    @include view-s-up {
+      margin-left: 0;
+    }
+  }
+}
+
+// when the item is positioned on the right side of the page
+// after masonry
+.interviews-list__item.is-right {
+  @include view-s-up() {
+    .interview {
+      margin-left: span(1 wide of 6);
+    }
+  }
+}
+
+// the "long" interviews list has a bit of additional styling
+.interviews-list.interviews-list--long {
+  .interview {
+    .interview__meta {
+      span {
+        text-transform: uppercase;
+      }
+    }
+
+    .interview__body {
+      &:after {
+        display: none;
+      }
+    }
+
+    .interview__link {
+      width: span(4 of 5);
+
+      min-width: 190px;
+      margin-left: auto;
+    }
+
+    @include view-s-up {
+      margin-left: 0;
+
+      .interview__link {
+        width: span(4 of 5);
+      }
+      &.is-short {
+        width: span(4 of 6);
+        margin-left: span(1 wide of 6);
+
+        .interview__link {
+          width: span(4 of 4);
+        }
+      }
+      &.has-margin {
+        margin-left: span(1 wide of 6);
+        &.is-short {
+          margin-left: span(2 wide of 6);
+        }
+      }
+    }
+
+    @include view-m-up() {
+      .interview__meta {
+        margin-bottom: rem-calc(30);
+      }
+      &.is-short {
+        .interview__link {
+          width: span(3 of 4);
+        }
+      }
+    }
+  }
+}
+
+html[data-darkmode="true"] {
+  .component--interviews {
+    background-color: transparent;
+
+    .interview .interview__meta .interview__avatar {
+      .author-avatar {
+        figure div {
+          mix-blend-mode: normal;
+        }
+      }
+    }
+
+    .interviews-header__title {
+      color: var(--color-pistache);
+    }
+  }
+}

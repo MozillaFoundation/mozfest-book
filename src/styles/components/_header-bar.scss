@@ -1,0 +1,232 @@
+.header-bar {
+  top: 0;
+  padding-top: rem-calc(10);
+  padding-bottom: rem-calc(6);
+
+  @include view-s-up() {
+    padding-top: rem-calc(19);
+  }
+  @include view-m-up() {
+    padding-top: rem-calc(14);
+  }
+}
+
+.header-bar__backdrop {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+  background-color: transparent;
+}
+
+// -- Nav positioning
+.header-bar {
+  position: fixed;
+  width: 100%;
+}
+
+.header-bar__inner {
+  .header-bar__top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-bar__index {
+    width: 100%;
+    min-height: rem-calc(30);
+    margin-top: rem-calc(12);
+  }
+
+  //
+  .header-bar__logo {
+    position: relative;
+    display: block;
+    width: rem-calc(24);
+    height: rem-calc(24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: rem-calc(5);
+
+    @include view-s-up() {
+      width: rem-calc(30);
+      height: rem-calc(30);
+      margin-top: rem-calc(-3);
+    }
+    @include view-m-up() {
+      margin-top: rem-calc(-7);
+    }
+
+    .header-logo {
+      display: none;
+    }
+    .header-logo--small {
+      display: block;
+      width: 100%;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @include view-m-up() {
+      .header-logo {
+        display: block;
+      }
+      .header-logo--small {
+        display: none;
+      }
+    }
+  }
+
+  .header-bar__actions {
+    display: none;
+
+    > * {
+      cursor: pointer;
+      color: currentColor;
+    }
+
+    button {
+      display: block;
+    }
+  }
+
+  .header-bar__burger {
+    width: rem-calc(30);
+    height: rem-calc(30);
+    margin-right: rem-calc(-4);
+  }
+
+  @include view-s-up() {
+    display: flex;
+    justify-content: space-between;
+
+    .header-bar__burger {
+      display: none;
+    }
+    .header-bar__top {
+      flex-shrink: 0;
+      width: span(4 of 12, $susy-s);
+    }
+    .header-bar__actions {
+      display: flex;
+      margin-left: auto;
+    }
+    .header-bar__index {
+      flex-shrink: 0;
+      margin-top: 0;
+
+      width: span(8 of 12, $susy-s);
+    }
+  }
+
+  @include view-m-up() {
+    .header-bar__top {
+      width: span(6 of 12, $susy-m);
+    }
+    .header-bar__index {
+      width: span(6 of 12, $susy-m);
+    }
+  }
+}
+
+// -- Header Bar Color ---------------------------------------------------------- //
+.header-bar {
+  --color-background: var(--theme-color);
+  .header-bar__backdrop {
+    transition-property: background-color, filter;
+    transition-duration: 500ms, 250ms;
+    transition-timing-function: ease;
+    transition-delay: 0ms, 0ms;
+
+    background-color: var(--theme-color);
+  }
+
+  &.index-open {
+    .header-bar__backdrop {
+      @include view-xs-only {
+        background-color: white;
+      }
+    }
+  }
+  &.hide-bg {
+    .header-bar__backdrop {
+      background-color: transparent !important;
+    }
+  }
+
+  &.reset-bg {
+    --color-background: var(--main-background-color);
+    .header-bar__backdrop {
+      background-color: var(--main-background-color);
+    }
+  }
+}
+
+// content background-color use for instance by the "interview component"
+html[data-has-content-background-color="true"] {
+  .header-bar .header-bar__backdrop {
+    background-color: var(--content-background-color);
+  }
+
+  .header-logo {
+    svg {
+      path {
+        fill: var(--content-background-color);
+      }
+    }
+  }
+}
+
+html[data-darkmode="true"] {
+  .header-bar {
+    --color-background: var(--main-background-color);
+    .header-bar__backdrop {
+      background-color: var(--main-background-color);
+    }
+    .header-logo svg path {
+      fill: currentColor;
+    }
+  }
+}
+
+// -- Header logo ---------------------------------------------------- //
+.header-logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-background);
+  transition: color 500ms ease;
+  svg {
+    path {
+      fill: currentColor;
+    }
+    #backdrop {
+      fill: var(--main-text-color);
+    }
+  }
+}
+
+.header-logo--small {
+  color: var(--main-text-color);
+  svg {
+    path {
+      fill: currentColor;
+    }
+  }
+}
+
+// -- States ---------------------------------------------------------- //
+.header-bar.index-open {
+  @include view-xs-only {
+    .header-logo {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.page {
+  .page-header {
+    text-align: center;
+    margin-bottom: rem-calc(60);
+
+    figure {
+      margin-bottom: rem-calc(60);
+    }
+    .page-header__title {
+      h1 {
+        @include font-heading-xl();
+        margin-bottom: rem-calc(30);
+      }
+      span {
+        @include font-mono-m();
+        // display: inline-block;
+        text-transform: uppercase;
+        button {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    @include view-s-up() {
+      margin-bottom: rem-calc(90);
+
+      figure {
+        margin-bottom: rem-calc(90);
+      }
+    }
+
+    @include view-m-up() {
+      margin-bottom: rem-calc(120);
+
+      figure {
+        margin-bottom: rem-calc(120);
+      }
+      .page-header__title {
+        h1 {
+          margin-bottom: rem-calc(60);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,232 @@
+.mozfest-footer {
+  color: var(--main-background-color);
+  background-color: var(--main-text-color);
+  padding-top: rem-calc(40);
+  padding-bottom: rem-calc(40);
+  font-size: rem-calc(18);
+  font-family: $font-nunito;
+
+  .icon-link,
+  h5 {
+    font-size: rem-calc(20);
+    font-family: $font-zilla;
+    margin-bottom: 1rem;
+  }
+  p {
+    margin-bottom: 1em;
+  }
+  p a {
+    color: var(--color-purple);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include view-s-up() {
+    .icon-link,
+    h5 {
+      font-size: rem-calc(22);
+    }
+  }
+}
+
+.mozfest-footer__inner {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  .mozfest-footer__column {
+    margin-top: rem-calc(60);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @include view-s-up() {
+    flex-direction: row;
+    justify-content: space-between;
+
+    > .mozfest-footer__column {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      width: span(6 of 12, $susy-s);
+
+      &:nth-child(2) {
+        width: span(5 of 12, $susy-s);
+      }
+    }
+  }
+
+  @include view-m-up() {
+    > .mozfest-footer__column {
+      width: span(5 of 12, $susy-m);
+      &:nth-child(2) {
+        width: span(6 of 12, $susy-m);
+      }
+    }
+  }
+}
+
+.mozfest-footer__more-nav {
+  @include view-m-up() {
+    display: flex;
+
+    .link-list {
+      column-count: 2;
+    }
+
+    .mozfest-footer__more {
+      flex-shrink: 0;
+      width: span(2 of 6, $susy-m);
+    }
+    .mozfest-footer__nav {
+      margin-left: gutter($susy-m);
+    }
+  }
+}
+
+.mozfest-footer__more {
+  margin-bottom: 2rem;
+  ul {
+    display: flex;
+    li {
+      margin-right: 0.5rem;
+      margin-bottom: 0.25rem;
+      a {
+        color: currentColor;
+      }
+      svg {
+        width: 80%;
+        path {
+          fill: currentColor;
+        }
+      }
+    }
+  }
+}
+
+.mozfest-footer__nav {
+  font-size: rem-calc(18);
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-purple);
+      text-decoration: underline;
+    }
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.mozfest-footer__download {
+  margin-bottom: rem-calc(40);
+  a {
+    padding: 0;
+    margin: 0;
+  }
+  a:hover {
+    color: var(--color-purple);
+  }
+}
+
+.mozfest-footer__row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid currentColor;
+  padding-top: rem-calc(20);
+  margin-top: rem-calc(60);
+
+  .mozilla-logo {
+    display: block;
+    width: rem-calc(96);
+    color: currentColor;
+    margin-bottom: rem-calc(10);
+
+    svg {
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+
+  .mozfest-footer__foundation {
+    font-size: rem-calc(12);
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  @include view-s-up() {
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: flex-start;
+    .mozilla-logo {
+      margin-bottom: 0;
+    }
+    .mozfest-footer__foundation {
+      width: span(6 of 12);
+    }
+  }
+
+  @include view-m-up() {
+    margin-top: rem-calc(120);
+    .mozfest-footer__foundation {
+      width: span(6 of 12);
+    }
+  }
+}
+
+// btn
+.mozfest-footer .btn {
+  display: block;
+  color: #fff;
+  background-color: var(--color-purple);
+  border-color: transparent;
+  padding: 0.5rem 1rem;
+  font-family: Nunito Sans;
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 18px;
+  line-height: 1.2222222222;
+  text-decoration: none;
+  text-align: center;
+
+  @include view-s-up() {
+    display: inline-block;
+    text-align: left;
+    margin-top: rem-calc(10);
+  }
+}
+
+html[data-darkmode="true"] {
+  .mozfest-footer {
+    background-color: var(--color-purple);
+
+    a {
+      color: var(--color-black);
+      &:hover {
+        color: white;
+      }
+    }
+    .mozfest-footer__foundation {
+      a {
+        color: white;
+      }
+    }
+    .btn {
+      color: var(--color-purple);
+      background-color: var(--color-black);
+    }
+  }
+}

@@ -1,0 +1,92 @@
+// This file handles all the blurring scenarios of the application.
+// The kind of blur is set on the 'data-blur' attribute.
+// This approach was used because the design had some specific blurring and
+// could only be achieved 'cross-browser' by blurring individual components.
+$blurAmount: 20px;
+
+// set transition for all blurrable components
+html {
+  .is-blurrable,
+  .app-header,
+  .book-chapters,
+  .header-bar__inner,
+  .header-bar__top,
+  .page-container,
+  main,
+  main .home {
+    transition: filter 250ms ease;
+    transition-delay: 50ms;
+  }
+}
+
+// fix the white wash when blurring
+html {
+  &[data-has-background-color="true"] {
+    body {
+      background-color: var(--theme-color);
+    }
+  }
+
+  &[data-darkmode="true"] {
+    body {
+      background-color: var(--color-black);
+    }
+  }
+}
+
+// // Blur States
+// !! backdrop filter duration is also set in _header-bar.scss
+html[data-blur="menu-blur"] {
+  .app-header .header-bar__inner,
+  .app-header .header-bar__backdrop,
+  main .page-container:not(.is-entering) {
+    filter: blur($blurAmount);
+  }
+}
+
+// !! backdrop filter duration is also set in _header-bar.scss
+html[data-blur="onboarding-blur"] {
+  .is-blurrable {
+    filter: blur($blurAmount);
+  }
+}
+
+// -------------------------------------------------------- //
+html[data-blur="index-blur"] {
+  @include view-s-up() {
+    .header-bar__top,
+    .app-header .header-bar__backdrop,
+    .book-chapters,
+    main {
+      filter: blur($blurAmount);
+    }
+  }
+}
+
+// -------------------------------------------------------- //
+html[data-blur="overlay-blur"] {
+  .app-header,
+  main {
+    filter: blur($blurAmount);
+  }
+}
+
+// -------------------------------------------------------- //
+html[data-blur="preface-blur"] {
+  .app-header .header-bar,
+  main .home {
+    filter: blur($blurAmount);
+  }
+}
+
+// pure for the annoying glow / white wash when using blur, and the html color bleeds
+// from the sides.
+html {
+  transition: background-color 0ms ease;
+  transition-delay: 300ms;
+
+  &[data-blur] {
+    transition-delay: 0ms;
+    background-color: var(--main-background-color);
+  }
+}
