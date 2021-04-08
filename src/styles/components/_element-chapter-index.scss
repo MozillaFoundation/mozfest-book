@@ -1,0 +1,117 @@
+.component--chapter-index {
+  .chapter-index {
+    @include view-s-up() {
+      width: span(10 of 12);
+      margin: auto;
+    }
+  }
+
+  .chapter-index__item {
+    display: block;
+    margin-bottom: rem-calc(80);
+    color: currentColor;
+    text-decoration: none;
+
+    .chapter-index__text {
+      @include font-body-m();
+      margin-top: rem-calc(18);
+    }
+    .chapter-index__button {
+      width: rem-calc(60);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include view-s-up() {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+
+      .chapter-index__text {
+        margin-top: 0;
+        margin-left: rem-calc(20);
+        font-size: rem-calc(24);
+      }
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+
+        .chapter-index__text {
+          margin-left: 0;
+          margin-right: rem-calc(40);
+        }
+      }
+    }
+
+    @include view-m-up() {
+      .chapter-index__button {
+        width: rem-calc(80);
+      }
+      .chapter-index__text {
+        margin-left: rem-calc(40);
+        font-size: rem-calc(40);
+      }
+    }
+  }
+
+  // -- Index Nr --------------- //
+  .chapter-index__button {
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    mask-image: url($path-assets + "/mask-enneagon.svg");
+    mask-size: 100%;
+    @include aspect-ratio(1 1);
+
+    > * {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .chapter-index__go {
+      background-color: var(--color-black);
+      transition: opacity 250ms ease;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        transition: transform 250ms ease;
+        transform: scale(0);
+        width: 50%;
+        position: relative;
+        color: white;
+      }
+    }
+    .chapter-index__nr {
+      background-color: var(--color-red);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon-number {
+        width: 50%;
+        position: relative;
+        color: white;
+      }
+    }
+  }
+}
+
+//
+@media (pointer: fine) {
+  .chapter-index__item:hover {
+    .chapter-index__go {
+      opacity: 1;
+      svg {
+        transform: scale(1);
+      }
+    }
+  }
+}

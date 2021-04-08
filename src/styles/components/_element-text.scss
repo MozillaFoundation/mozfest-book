@@ -1,0 +1,287 @@
+.component--text {
+  position: relative;
+
+  .text {
+    overflow: hidden;
+
+    // p {
+    //   margin-bottom: 1em;
+    // }
+    // p.intro {
+    //   @include font-body-m();
+    //   margin-bottom: 1.5em;
+    // }
+
+    h2 {
+      @include font-heading();
+      margin-bottom: rem-calc(30);
+    }
+
+    // * + h2 {
+    //   margin-top: rem-calc(85);
+    // }
+
+    h2 {
+      margin-top: rem-calc(60);
+    }
+    * + h2 {
+      margin-top: rem-calc(90);
+    }
+  }
+
+  aside {
+    @include font-mono-aside();
+    margin-bottom: rem-calc(90);
+    z-index: 1;
+    button {
+      cursor: pointer;
+      display: block;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  @include view-s-up() {
+    .text {
+      h2,
+      p {
+        width: span(9 of 12);
+        margin-left: span(3 wide of 12);
+      }
+      p.intro {
+        width: span(10 of 12);
+        margin-left: span(1 wide of 12);
+        margin-bottom: rem-calc(60);
+      }
+
+      // h2 {
+      //   margin-bottom: rem-calc(60);
+      // }
+    }
+    aside {
+      // position: absolute;
+      // left: 0;
+      // top: 0;
+
+      // width: span(4 of 12);
+      margin-left: span(3 wide of 12);
+      width: span(4 of 12);
+      min-width: rem-calc(225);
+      margin-bottom: rem-calc(60);
+
+      // min-width: rem-calc(230);
+      // margin-bottom: rem-calc(60);
+    }
+  }
+
+  @include view-m-up() {
+    .text {
+      h2,
+      p:not(.intro) {
+        width: span(8 of 12);
+        margin-left: span(4 wide of 12);
+      }
+      p.intro {
+        // width: span(10 of 12);
+        // margin-left: span(1 wide of 12);
+        margin-bottom: rem-calc(80);
+      }
+
+      h2 {
+        margin-top: rem-calc(40);
+        margin-bottom: rem-calc(60);
+      }
+
+      * + h2 {
+        margin-top: rem-calc(120);
+      }
+    }
+    aside {
+      width: span(3 of 12);
+
+      margin-bottom: 0;
+      margin-left: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.page {
+  .component--text {
+    aside {
+      // @include font-body-s();
+
+      @include font-mono-aside();
+
+      @include view-m-up() {
+        margin-top: 0.35em;
+        text-align: left;
+        margin-left: span(1 wide of 12, $susy-m);
+      }
+    }
+
+    @include view-s-up() {
+      .text {
+        h2,
+        p:not(.intro) {
+          width: span(8 of 12);
+          margin-left: span(3 wide of 12);
+        }
+      }
+    }
+  }
+}
+
+// -- Chapter styles ------- //
+[data-chapter="01"] {
+  .component--text {
+    .text {
+      p {
+        @include font-body-serif();
+      }
+      p.intro {
+        margin-bottom: rem-calc(30);
+        @include font-body-m();
+      }
+
+      @include view-s-up() {
+        p.intro {
+          margin-bottom: rem-calc(63);
+        }
+      }
+      @include view-m-up() {
+        p.intro {
+          margin-bottom: rem-calc(83);
+        }
+      }
+    }
+  }
+}
+[data-chapter="03"],
+[data-chapter="01"] {
+  .component--text {
+    .text {
+      // color: red;
+      // @include font-body-serif();
+      // line-height: 1.153;
+      p {
+        @include font-body-serif();
+      }
+      p:not(:last-child):not(.intro) {
+        margin-bottom: 1.2em;
+      }
+    }
+  }
+}
+
+[data-chapter="02"] {
+  .component--text {
+    .text {
+      font-family: $font-serif;
+      p {
+        @include font-body-serif();
+      }
+      p.intro {
+        @include font-body-serif-m();
+
+        margin-left: 0;
+        width: 100%;
+      }
+      h2 {
+      }
+    }
+  }
+}
+
+[data-chapter="03"] {
+  .component--text {
+    .text {
+      h2 {
+        @include font-heading-serif();
+        font-style: italic;
+        text-align: center;
+        margin-top: rem-calc(90);
+        margin-bottom: rem-calc(30);
+      }
+    }
+    @include view-s-up() {
+      .text {
+        h2,
+        p {
+          width: span(10 of 12);
+          margin-left: auto;
+          margin-right: auto;
+          // margin-left: span(3 wide of 12);
+        }
+        h2 {
+          margin-bottom: rem-calc(60);
+        }
+      }
+    }
+    @include view-m-up() {
+      .text {
+        h2,
+        p {
+          width: span(8 of 12);
+          margin-left: auto;
+          margin-right: auto;
+          // margin-left: span(3 wide of 12);
+        }
+        h2 {
+          width: span(7 wide of 12);
+          margin-top: rem-calc(120);
+        }
+        h2 + p {
+          margin-top: rem-calc(60);
+        }
+      }
+    }
+  }
+}
+
+[data-chapter="06"] {
+  .component--text {
+    aside {
+      @include font-body();
+      font-family: $font;
+      margin-bottom: rem-calc(60);
+      p {
+        margin-bottom: 1em;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      h4 {
+        @include font-mono-s();
+        font-size: rem-calc(12);
+      }
+    }
+  }
+}
+
+// reposition the aside on the home
+.home-overlay .component--text.has-aside {
+  aside {
+    @include font-mono-m();
+  }
+  // border: 2px solid red;
+  @include view-s-up() {
+    aside {
+      margin-bottom: 0;
+      margin-left: 0;
+      position: absolute;
+      left: span(1 wide of 12);
+      top: rem-calc(4);
+    }
+  }
+
+  @include view-m-up() {
+    aside {
+      top: rem-calc(0);
+    }
+  }
+}

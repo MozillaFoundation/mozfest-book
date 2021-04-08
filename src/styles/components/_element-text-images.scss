@@ -1,0 +1,61 @@
+.text-images {
+  position: relative;
+
+  .text-images__sizer {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    height: 10px;
+    width: 100%;
+
+    @include view-s-up() {
+      width: span(3 of 12);
+    }
+    @include view-m-up() {
+      width: span(3 wider of 12);
+    }
+  }
+}
+
+.text-images__image {
+  margin-top: rem-calc(60);
+  figure {
+    margin: 0 auto;
+    margin-left: -$spacing-s;
+    margin-right: -$spacing-s;
+
+    &.is-portrait {
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  figure {
+    margin-top: rem-calc(60);
+  }
+
+  @include view-s-up() {
+    margin-left: -$spacing-s;
+    margin-right: -$spacing-s;
+    figure {
+      margin-top: rem-calc(40);
+
+      &.is-portrait {
+        margin-left: 0;
+        margin-right: auto;
+        width: span(7 of 12, $susy-s);
+      }
+    }
+  }
+  @include view-m-up() {
+    figure {
+      margin-top: rem-calc(80);
+
+      &.is-portrait {
+        margin-left: 0;
+        margin-right: auto;
+        width: span(6 wider of 12, $susy-m);
+      }
+    }
+  }
+}

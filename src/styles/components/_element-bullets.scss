@@ -1,0 +1,113 @@
+.bullets-hands {
+  li {
+    position: relative;
+    margin-bottom: rem-calc(30);
+    width: span(5 of 6);
+
+    figure {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: span(1 wide of 5);
+      transform: translateX(-100%);
+
+      svg {
+        width: 44px;
+        height: 36px;
+      }
+    }
+
+    // transitions
+    figure {
+      transition-property: opacity, transform;
+      transition-duration: 250ms, 350ms;
+      transition-delay: 0ms, 0ms;
+      transition-timing-function: ease, cubic-bezier(0.22, 1.38, 0.64, 1);
+    }
+    div {
+      transition-property: transform;
+      transition-duration: 300ms;
+      transition-timing-function: cubic-bezier(0.22, 1.38, 0.64, 1);
+      transition-delay: 75ms;
+    }
+
+    &.is-active {
+      figure {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      div {
+        transform: translateX(#{span(1 wide of 5)});
+      }
+    }
+  }
+
+  @include view-s-up() {
+    li {
+      width: span(10 of 12);
+      figure {
+        width: span(1 wide of 10);
+      }
+
+      &.is-active {
+        div {
+          transform: translateX(#{span(1 wide of 10)});
+        }
+      }
+    }
+  }
+
+  @include view-m-up() {
+    li {
+      width: span(8 of 12);
+      margin-left: span(1 wide of 12);
+      margin-bottom: rem-calc(40);
+
+      figure {
+        svg {
+          position: absolute;
+          right: 0;
+        }
+      }
+      &.is-active {
+        div {
+          transform: translateX(#{span(1 wide of 8)});
+        }
+      }
+    }
+  }
+}
+
+.chapter[data-chapter="06"],
+.chapter[data-chapter="04"] {
+  .bullets-hands {
+    @include view-s-up() {
+      li {
+        width: 100%;
+        width: span(9 of 12);
+        margin-left: span(2 wide of 12);
+
+        &.is-active {
+          div {
+            transform: translateX(#{span(1 wide of 9)});
+          }
+        }
+      }
+    }
+
+    @include view-m-up() {
+      li {
+        width: span(8 of 12);
+        margin-left: span(3 wide of 12);
+
+        &.is-active {
+          div {
+            transform: translateX(#{span(1 wide of 8)});
+          }
+        }
+      }
+    }
+  }
+}

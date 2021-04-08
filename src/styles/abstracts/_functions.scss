@@ -1,0 +1,9 @@
+// unitless line height fuction
+@function line-height($font-size, $line-height: $font-size) {
+  @return $line-height/$font-size;
+}
+
+@function rem-calc($size) {
+  $remSize: $size / $base-font-size;
+  @return #{$remSize}rem;
+}

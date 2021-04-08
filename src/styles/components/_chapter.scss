@@ -1,0 +1,509 @@
+.chapter {
+  width: 100%;
+}
+
+.chapter-page__intro {
+  padding-top: rem-calc(90);
+  @include view-s-up() {
+    p {
+      width: span(9 of 12);
+      margin-left: span(3 wide of 12);
+    }
+  }
+
+  @include view-m-up() {
+    padding-top: rem-calc(160);
+
+    p {
+      width: span(8 of 12);
+      margin-left: span(4 wide of 12);
+    }
+  }
+}
+
+.chapter-page__body {
+  padding-top: rem-calc(90);
+  padding-bottom: rem-calc(60);
+
+  @include view-m-up() {
+    padding-top: rem-calc(160);
+    padding-bottom: rem-calc(160);
+  }
+}
+
+//
+.chapter-page__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  z-index: 0; // fixed the issue in which the chapter 2 panels we're peeping through the transition layer
+
+  background-color: var(--theme-color);
+  transition: background-color 500ms ease;
+
+  &.has-background-reset {
+    background-color: var(--main-background-color);
+  }
+
+  .chapter-page__next {
+    margin-top: auto;
+  }
+}
+
+// content background-color use for instance by the "interview component"
+html[data-has-content-background-color="true"] {
+  .chapter-page__inner {
+    background-color: var(--content-background-color);
+  }
+}
+
+html[data-darkmode="true"] {
+  .chapter-page__inner {
+    background-color: var(--main-background-color);
+  }
+}
+
+// -- Chapter Page Next ----------------------------- //
+.chapter-page__next {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--theme-color);
+  text-align: center;
+
+  padding-top: rem-calc(25);
+  padding-bottom: rem-calc(60);
+  color: var(--color-black);
+  // color: var(--main-text-color) !important;
+
+  > div {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  span {
+    @include font-mono();
+    text-transform: uppercase;
+    font-size: rem-calc(12);
+    @include view-s-up() {
+      font-size: rem-calc(14);
+    }
+    @include view-m-up() {
+      font-size: rem-calc(18);
+    }
+  }
+
+  h3 {
+    @include font-body();
+  }
+
+  .progress {
+    position: relative;
+    background-color: rgba(100, 100, 100, 0.2);
+    height: 5px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    mix-blend-mode: multiply;
+    margin-top: 1em;
+    opacity: 0;
+    span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: top left;
+      left: 0;
+      background-color: rgba(100, 100, 100, 0.5);
+    }
+  }
+
+  @include view-s-up() {
+    padding-top: rem-calc(15);
+    h3 {
+      margin-top: -0.05em;
+    }
+  }
+
+  @include view-m-up() {
+    padding-top: rem-calc(30);
+    padding-bottom: rem-calc(65);
+
+    h3 {
+      margin-top: 0.05em;
+    }
+  }
+}
+
+// html[data-darkmode="true"] {
+//   .chapter-page__next {
+//     color: var(--color-black);
+//   }
+// }
+// -- Page ------------------------------- //
+.page-title {
+  margin-bottom: rem-calc(60);
+  text-align: center;
+
+  .subtitle,
+  .tagline {
+    @include font-body-s();
+    @include font-mono();
+    display: inline-block;
+    text-decoration: underline;
+    margin-bottom: rem-calc(20);
+  }
+  h1 {
+    @include font-heading-xl();
+  }
+
+  .subtitle {
+    text-transform: uppercase;
+    text-decoration: none;
+
+    .bio-link {
+      text-transform: uppercase;
+    }
+  }
+
+  @include view-s-up() {
+    margin-bottom: rem-calc(90);
+  }
+  @include view-m-up() {
+    margin-bottom: rem-calc(120);
+
+    .subtitle,
+    .tagline {
+      margin-bottom: rem-calc(40);
+    }
+  }
+}
+
+.chapter[data-chapter="01"],
+.chapter[data-chapter="03"] {
+  @include font-body-serif();
+}
+
+// Chapter specific styling
+.chapter[data-chapter="03"] {
+  .chapter-page__body {
+    font-family: $font-serif;
+  }
+  .chapter-page__body header + * {
+    // article line
+    &:before {
+      content: "";
+      width: 100px;
+      height: 1px;
+      background-color: currentColor;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transform: translateY(-10px);
+
+      @include view-s-up() {
+        width: 130px;
+      }
+      @include view-m-up() {
+        width: 180px;
+      }
+    }
+  }
+  .page-title {
+    // color: red;
+    h1 {
+      @include font-heading-tiempos();
+    }
+
+    .subtitle,
+    .tagline {
+      font-size: rem-calc(16);
+    }
+    .subtitle {
+      margin-top: rem-calc(30);
+      font-size: rem-calc(14);
+      width: 50%;
+      margin-bottom: 0;
+      @include font-mono-m();
+    }
+
+    @include view-s-up() {
+      .subtitle {
+        width: span(5 of 12);
+      }
+    }
+    @include view-m-up() {
+      .tagline {
+        font-size: rem-calc(18);
+      }
+      h1 {
+        width: span(9 wider of 12);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .subtitle {
+        margin-top: rem-calc(60);
+      }
+    }
+  }
+}
+
+.chapter[data-chapter="05"] {
+  .page-title {
+    .tagline {
+      @include font-body-s();
+      font-family: $font;
+      font-size: rem-calc(14);
+      text-decoration: none;
+      margin-bottom: rem-calc(16);
+    }
+
+    .tagline__author {
+      text-decoration: underline;
+    }
+
+    @include view-m-up() {
+      .subtitle,
+      .tagline {
+        margin-bottom: rem-calc(20);
+        font-size: rem-calc(18);
+      }
+    }
+  }
+}
+
+.chapter[data-chapter="06"] {
+  .page-title {
+    span {
+      margin-bottom: rem-calc(10);
+    }
+    span.subtitle {
+      display: none;
+    }
+  }
+
+  @include view-m-up() {
+    .page-title {
+      span.subtitle {
+        text-transform: uppercase;
+        font-size: rem-calc(16);
+        margin-top: rem-calc(60);
+        display: block;
+        button {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+// -- Page Intro -----------------------------------------------------------
+.page-intro {
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  aside {
+    margin-bottom: rem-calc(90);
+  }
+
+  h2 {
+    @include font-heading();
+    margin-bottom: rem-calc(30);
+  }
+  .text {
+    margin-bottom: rem-calc(40);
+  }
+
+  @include view-s-up() {
+    aside {
+      margin-bottom: rem-calc(60);
+      min-width: rem-calc(225);
+      width: span(4 of 12);
+    }
+    > * {
+      margin-left: span(3 wide of 12);
+    }
+  }
+
+  @include view-m-up() {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      margin-left: 0;
+    }
+
+    h2 {
+      order: 0;
+      width: span(8 of 12);
+      margin-left: span(4 wide of 12);
+      margin-bottom: rem-calc(60);
+    }
+
+    aside {
+      order: 1;
+      width: span(3 of 12);
+      margin-right: span(1 wider of 12);
+      margin-bottom: 0;
+      margin-top: rem-calc(6);
+    }
+
+    .text {
+      order: 2;
+      width: span(8 of 12);
+      margin-bottom: 0;
+    }
+  }
+
+  // overrule
+  .bio-link {
+    text-align: left;
+  }
+}
+
+.chapter[data-chapter="04"] {
+  .page-intro {
+    aside {
+      @include font-mono-aside();
+    }
+  }
+}
+
+.chapter[data-chapter="06"] {
+  .page-intro {
+    aside {
+      @include font-body();
+      // font-family: $font;
+      margin-bottom: rem-calc(60);
+
+      .bio-link--avatar {
+        margin-top: rem-calc(10);
+      }
+    }
+
+    p {
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    h4 {
+      @include font-mono-s();
+      font-size: rem-calc(12);
+    }
+  }
+}
+
+// add a little more space on mobile, otherwise the index number was
+// almost reaching the top number
+.chapter-page.is-subchapter {
+  .chapter-page__body {
+    padding-top: rem-calc(180);
+  }
+  @include view-s-up() {
+    .chapter-page__body {
+      padding-top: rem-calc(150);
+    }
+  }
+  @include view-m-up() {
+    .chapter-page__body {
+      padding-top: rem-calc(170);
+    }
+  }
+}
+
+// -- Chapter page splash ------------------------------------------------------- //
+.chapter-page__splash {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: rem-calc(150);
+  padding-bottom: rem-calc(40);
+
+  .chapter-page__number {
+    display: block;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    transform: scale(3);
+    color: var(--main-background-color);
+
+    mask-image: url($path-assets + "/mask-enneagon.svg");
+    mask-size: 100%;
+    background-color: var(--main-text-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon-number {
+      width: 50%;
+      position: relative;
+      color: var(--main-background-color);
+    }
+  }
+
+  .chapter-page__title {
+    display: block;
+    margin-top: rem-calc(40);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: rem-calc(40);
+    width: 100%;
+    svg {
+      width: 100%;
+      height: auto;
+      g {
+        path {
+          fill: currentColor;
+        }
+      }
+    }
+  }
+
+  > a {
+    margin-top: auto;
+  }
+  h1 {
+    margin-top: 300px;
+    font-size: 100px;
+    max-width: 50vw;
+  }
+
+  @include view-s-up() {
+    padding-top: rem-calc(150);
+
+    .chapter-page__number {
+      width: 90px;
+      height: 90px;
+    }
+    .chapter-page__title {
+      width: 95%;
+      margin-top: rem-calc(60);
+    }
+  }
+
+  @include view-m-up() {
+    .chapter-page__title {
+      width: span(8 of 12, $susy-m);
+      margin-top: 0;
+      margin-bottom: rem-calc(60);
+    }
+  }
+}
+
+// chapter title colors
+.chapter-page__splash .chapter-page__title {
+  color: var(--color-black);
+}
+html[data-darkmode="true"] {
+  .chapter-page__splash .chapter-page__title {
+    color: var(--theme-color);
+  }
+}

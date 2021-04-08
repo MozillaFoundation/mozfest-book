@@ -1,0 +1,8 @@
+// fix to make layer transition right
+// before this, the chapter would not overlay the home overlay
+.page-container {
+  position: relative;
+
+  // added to fix an issue with chapter 02
+  overflow: hidden;
+}

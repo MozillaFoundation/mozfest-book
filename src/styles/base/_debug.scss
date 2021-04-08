@@ -1,0 +1,18 @@
+$pesticide-debug-depth: false;
+$pesticide-debug-outline: true;
+
+/**
+ * Grid Background 
+ */
+.container,
+.section__container,
+.section-container {
+  background: susy-svg-grid($susy) no-repeat scroll;
+
+  @include view-s-up {
+    background: susy-svg-grid($susy-s) no-repeat scroll;
+  }
+  @include view-m-up {
+    background: susy-svg-grid($susy-m) no-repeat scroll;
+  }
+}

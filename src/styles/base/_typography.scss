@@ -1,0 +1,204 @@
+// -- FONTS --------------------------------------------------------------- //
+$path-fonts: "../../assets/fonts/";
+
+@mixin fontface($name, $font, $weight) {
+  @font-face {
+    font-family: #{$name};
+    src: url("#{$path-fonts}#{$font}.eot"); /* IE9 Compat Modes */
+    src: url("#{$path-fonts}#{$font}.eot?#iefix") format("embedded-opentype"),
+      url("#{$path-fonts}#{$font}.woff") format("woff"), url("#{$path-fonts}#{$font}.woff2") format("woff2");
+    font-weight: $weight;
+    font-style: normal;
+  }
+}
+
+@include fontface("Suisse", "SuisseIntl-Regular-WebS", 400);
+@include fontface("Tiempos", "tiempos-fine-web-light", 100);
+@include fontface("IBM Plex Mono", "ibm-plex-mono-v6-latin-regular", 400);
+
+$font: "Suisse", Arial;
+$font-serif: "Times new roman";
+$font-tiempos: "Tiempos";
+$font-mono: "IBM Plex Mono";
+$font-nunito: "Nunito Sans";
+$font-zilla: "Zilla Slab";
+
+// -- Font Styles --------------------------------------------------------- //
+@mixin font-serif() {
+  font-family: $font-serif;
+  line-height: 1.23;
+}
+@mixin font-mono() {
+  font-family: $font-mono;
+  letter-spacing: -0.05em;
+}
+
+@mixin font-mono-s() {
+  @include font-mono();
+  font-size: rem-calc(12);
+  line-height: 1.25;
+
+  @include view-s-up() {
+    font-size: rem-calc(14);
+  }
+
+  @include view-m-up() {
+    line-height: 1.333;
+    font-size: rem-calc(16);
+  }
+}
+
+@mixin font-mono-m() {
+  @include font-mono();
+  font-size: rem-calc(14);
+  line-height: 1.25;
+
+  @include view-m-up() {
+    font-size: rem-calc(16);
+  }
+}
+
+@mixin font-mono-aside() {
+  @include font-mono();
+  font-size: rem-calc(16);
+  line-height: 1.25;
+  @include view-s-up() {
+    line-height: 1.2857;
+
+    font-size: rem-calc(14);
+  }
+  @include view-m-up() {
+    line-height: 1.35;
+
+    font-size: rem-calc(18);
+  }
+}
+
+// -- Sans ---------------------------------------------------------- //
+@mixin font-body-s() {
+  font-family: $font;
+
+  font-size: rem-calc(12);
+
+  @include view-s-up() {
+    font-size: rem-calc(18);
+  }
+  @include view-m-up() {
+    font-size: rem-calc(20);
+  }
+}
+
+@mixin font-body() {
+  font-family: $font;
+
+  font-size: rem-calc(18);
+  line-height: 1.38;
+  @include view-s-up() {
+    line-height: 1.3;
+
+    font-size: rem-calc(20);
+  }
+  @include view-m-up() {
+    line-height: 1.45;
+    font-size: rem-calc(24);
+  }
+}
+
+//
+@mixin font-body-m() {
+  font-family: $font;
+  font-size: rem-calc(24);
+  line-height: 1.3333;
+
+  @include view-s-up() {
+    font-size: rem-calc(28);
+    line-height: 1.2857;
+  }
+  @include view-m-up() {
+    font-size: rem-calc(40);
+    line-height: 1.2;
+  }
+}
+
+//
+@mixin font-heading() {
+  font-size: rem-calc(24);
+  line-height: 1.125;
+
+  @include view-s-up() {
+    font-size: rem-calc(28);
+  }
+  @include view-m-up() {
+    font-size: rem-calc(48);
+  }
+}
+
+@mixin font-heading-tiempos() {
+  font-size: rem-calc(40);
+  font-family: $font-tiempos;
+  line-height: 1.1;
+
+  @include view-s-up() {
+    font-size: rem-calc(60);
+    line-height: 1.03;
+  }
+  @include view-m-up() {
+    font-size: rem-calc(90);
+  }
+}
+
+//
+@mixin font-heading-xl() {
+  font-size: rem-calc(40);
+  line-height: 1;
+
+  @include view-s-up() {
+    font-size: rem-calc(60);
+  }
+  @include view-m-up() {
+    font-size: rem-calc(96);
+  }
+}
+
+// -- Serif ---------------------------------------------------------- //
+@mixin font-body-serif() {
+  font-family: $font-serif;
+  font-size: rem-calc(20);
+  line-height: 1.2;
+
+  @include view-s-up() {
+    font-size: rem-calc(22);
+  }
+  @include view-m-up() {
+    line-height: 1.32;
+    font-size: rem-calc(26);
+  }
+}
+
+@mixin font-body-serif-m() {
+  font-family: $font-serif;
+  font-size: rem-calc(26);
+  line-height: 1.2307;
+
+  @include view-s-up() {
+    font-size: rem-calc(30);
+  }
+  @include view-m-up() {
+    line-height: 1.15;
+    font-size: rem-calc(40);
+  }
+}
+
+@mixin font-heading-serif() {
+  font-family: $font-serif;
+
+  font-size: rem-calc(26);
+  line-height: 1;
+
+  @include view-s-up() {
+    font-size: rem-calc(32);
+  }
+  @include view-m-up() {
+    font-size: rem-calc(48);
+  }
+}

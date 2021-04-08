@@ -1,0 +1,263 @@
+.home {
+  background-color: var(--main-background-color);
+  // Quote
+  blockquote {
+    padding: 0;
+    margin: 0;
+    @include font-body-m();
+    cite {
+      @include font-body();
+      display: inline-block;
+      margin-top: rem-calc(20);
+      font-style: normal;
+    }
+  }
+
+  .home-block__button {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    bottom: rem-calc(-105);
+    @include view-m-up() {
+      width: rem-calc(252);
+      font-size: rem-calc(32);
+      right: span(1 wide of 12);
+    }
+  }
+
+  //
+  .card-button {
+    cursor: pointer;
+    width: rem-calc(160);
+    padding: 18px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: var(--color-red);
+    @include font-mono();
+    font-size: rem-calc(18);
+    line-height: 0.9333;
+
+    @include view-s-up() {
+      width: rem-calc(200);
+      font-size: rem-calc(24);
+    }
+    @include view-m-up() {
+      width: rem-calc(252);
+      font-size: rem-calc(32);
+    }
+  }
+}
+
+.home-block--howto,
+.home-block--howto-community {
+  overflow: hidden;
+}
+.home-block {
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+// home block animation
+.home-block--howto {
+  color: var(--color-purple);
+  margin-top: rem-calc(30);
+  > * {
+    margin: 0 auto;
+    width: span(12 of 12);
+
+    svg {
+      path {
+        fill: var(--color-purple);
+      }
+    }
+  }
+
+  @include view-s-up() {
+    > * {
+      width: span(12 of 12);
+    }
+  }
+  @include view-m-up() {
+    > * {
+      width: span(9 of 12);
+    }
+    margin-top: rem-calc(0);
+  }
+}
+
+.home-block--howto-community {
+  color: var(--color-purple);
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.home-block--quote {
+  position: relative;
+  .home-block__inner {
+    width: span(10 of 12);
+    margin: 0 auto;
+  }
+}
+
+// -- Home Onboard ------------------------------------------ //
+.home-onboard-menu {
+  margin-top: rem-calc(90);
+
+  .home-onboard-menu__inner {
+    width: 100%;
+
+    &.is-absolute {
+      position: absolute;
+    }
+  }
+
+  @include view-s-up() {
+    height: 1200px;
+
+    .home-onboard-menu__inner {
+      position: fixed;
+      top: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// -- Book Chapter Nav -------------------------------------- //
+
+.home-overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.home-header {
+  padding-top: rem-calc(30);
+  margin-bottom: 100px;
+  .header-logo {
+    color: var(--main-background-color);
+
+    transform-origin: left top;
+    transform: scale(0.82);
+  }
+
+  @include view-s-up() {
+    margin-bottom: 50px;
+
+    padding-top: rem-calc(35);
+  }
+  @include view-m-up() {
+    padding-top: rem-calc(44);
+    .header-logo {
+      transform: scale(1);
+    }
+  }
+}
+
+.home-footer {
+  width: 100%;
+  min-height: 50vh;
+  background-color: var(--color-black);
+}
+
+// -- Overlay ------------------------------------------- //
+.overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+
+  .overlay-wrapper__inner {
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+    width: calc(100vw - #{$margin-xs} * 2);
+    @include view-s-up {
+      width: calc(100vw - #{$margin-s} * 2);
+    }
+    @include view-m-up {
+      width: calc(100vw - #{$margin-m} * 2);
+    }
+
+    > * {
+      margin-left: -$margin-xs;
+      margin-right: -$margin-xs;
+
+      @include view-s-up {
+        margin-left: -$margin-s;
+        margin-right: -$margin-s;
+      }
+      @include view-m-up {
+        margin-left: -$margin-m;
+        margin-right: -$margin-m;
+      }
+    }
+  }
+}
+
+.overlay--preface {
+  .overlay__content {
+    margin-bottom: rem-calc(100);
+    width: calc(100vw - #{$margin-xs} * 2);
+
+    @include view-s-up {
+      margin-bottom: rem-calc(60);
+      width: calc(100vw - #{$margin-s} * 2);
+    }
+
+    @include view-m-up {
+      margin-bottom: rem-calc(140);
+      width: calc(100vw - #{$margin-m} * 2);
+    }
+
+    > * {
+      margin-left: -$margin-xs;
+      margin-right: -$margin-xs;
+
+      @include view-s-up {
+        margin-left: -$margin-s;
+        margin-right: -$margin-s;
+      }
+      @include view-m-up {
+        margin-left: -$margin-m;
+        margin-right: -$margin-m;
+      }
+    }
+  }
+}
+
+// .home-overlay .overlat {
+//   .page-header__title {
+//     span,
+//     button {
+//       text-transform: uppercase;
+//     }
+
+//     button {
+//       white-space: nowrap;
+//       span {
+//         white-space: nowrap;
+//       }
+//     }
+//   }
+// }
+
+// .home-onboard-menu {
+//   .somecontainer.is-vertical-centered {
+//     position: fixed;
+//     top: 0;
+//     height: 100vh;
+//     width: 100vw;
+
+//     .book-chapters {
+//       width: 100%;
+//       position: absolute;
+//     }
+//   }
+// }

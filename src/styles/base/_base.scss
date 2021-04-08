@@ -1,0 +1,52 @@
+*:not(button, a):focus {
+  outline: none;
+}
+
+::selection {
+  color: var(--color-black);
+  background: var(--theme-color);
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+// fix the white borders around the blur
+html {
+  background-color: var(--theme-color);
+}
+
+body {
+  font-family: $font;
+  @include font-body();
+  margin: 0;
+  color: var(--main-text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text {
+  p {
+    margin-bottom: 1.2em;
+
+    a {
+      color: currentColor;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  p.intro {
+    @include font-body-m();
+    margin-bottom: 1.5em;
+  }
+}
+
+// -- Dark Mode ------------------------------------------- //
+html[data-darkmode="true"] {
+  --main-text-color: white;
+  --main-background-color: var(--color-black);
+}

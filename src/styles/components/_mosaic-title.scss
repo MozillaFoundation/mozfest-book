@@ -1,0 +1,9 @@
+.mosaic-title {
+  h1 {
+    display: block;
+    border: 1px solid transparent;
+    position: absolute;
+    @include font-heading-tiempos();
+    opacity: 0;
+  }
+}

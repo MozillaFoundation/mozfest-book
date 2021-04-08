@@ -1,0 +1,82 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
+
+  .overlay__close {
+    position: relative;
+    padding-bottom: rem-calc(30);
+
+    button {
+      width: 50px;
+      height: 50px;
+    }
+
+    button {
+      margin-left: auto;
+      background-color: var(--color-black);
+      top: 0;
+      right: 0;
+
+      width: 60px;
+      height: 60px;
+
+      mask-image: url($path-assets + "/mask-enneagon.svg");
+      mask-size: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+
+      svg {
+        width: rem-calc(24);
+        height: rem-calc(24);
+        color: currentColor;
+      }
+
+      @media (pointer: fine) {
+        display: none;
+      }
+    }
+  }
+
+  .overlay__inner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: rem-calc(20);
+    margin-bottom: rem-calc(20);
+    overflow: hidden;
+  }
+
+  @include view-s-up() {
+    .overlay__close {
+      height: 90px;
+      button {
+        position: fixed;
+        top: auto;
+        right: $margin-s;
+        z-index: 1;
+      }
+    }
+    .overlay__inner {
+      margin-top: rem-calc(30);
+    }
+  }
+
+  @include view-m-up() {
+    .overlay__close {
+      position: absolute;
+      display: none;
+    }
+    .overlay__inner {
+      margin-top: rem-calc(100);
+      margin-bottom: rem-calc(100);
+    }
+  }
+}

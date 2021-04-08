@@ -1,0 +1,99 @@
+.timeline-section {
+  .timeline-section__header {
+    // add some spacing in the header, this also causes the pin effect to trigger earlier.
+    padding-top: 200px;
+  }
+
+  @include view-s-up() {
+    .timeline-section__header {
+      // add some spacing in the header, this also causes the pin effect to trigger earlier.
+      padding-top: 15vh;
+    }
+  }
+}
+
+// -- Chapter Timeline ------------------------------- //
+.timeline-section__header {
+  text-align: center;
+  width: 100% !important;
+
+  // section lines
+  &:after,
+  &:before {
+    content: "";
+    width: 1px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    background-color: var(--theme-color);
+  }
+
+  &:after {
+    content: "";
+    width: 9px;
+    height: 1px;
+    top: auto;
+    transform: translateX(-50%);
+  }
+  &:after,
+  &:before {
+    bottom: 50px;
+  }
+
+  h3 {
+    transform-origin: "top center";
+    @include font-body();
+  }
+
+  @include view-m-up() {
+    &:after,
+    &:before {
+      bottom: 90px;
+    }
+    h3 {
+      margin-top: rem-calc(40);
+
+      @include view-m-up() {
+        font-size: rem-calc(30);
+      }
+    }
+  }
+}
+
+.timeline-section__title {
+  padding-top: rem-calc(6);
+
+  h1 {
+    text-align: center;
+    @include font-body-m();
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1 !important;
+  }
+
+  @include view-s-up() {
+    h1 {
+      width: 40%;
+    }
+  }
+}
+
+.timeline-section__content {
+  position: relative;
+  min-height: 100px;
+  padding-top: 120px;
+
+  // remove the bottom margin which is automatically added
+  .text p:last-child {
+    margin-bottom: 0;
+  }
+
+  > .component:first-child {
+    margin-top: 0;
+  }
+
+  @include view-m-up() {
+    padding-top: 80px;
+  }
+}

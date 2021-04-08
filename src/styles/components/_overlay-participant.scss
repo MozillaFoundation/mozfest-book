@@ -1,0 +1,82 @@
+.participant-bio {
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+
+  a {
+    color: currentColor;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .author-avatar {
+    width: 10vw;
+    width: span(2 wider of 6);
+    margin-bottom: rem-calc(40);
+  }
+
+  .participant-bio__header {
+    text-align: center;
+    margin-bottom: rem-calc(40);
+
+    h1 {
+      @include font-body-m();
+    }
+    p {
+      margin-top: rem-calc(10);
+      text-transform: uppercase;
+      @include font-mono-m();
+    }
+  }
+
+  .participant-bio__footer {
+    margin-top: rem-calc(60);
+    margin-bottom: rem-calc(40);
+    @include font-mono-m();
+    text-transform: uppercase;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: rem-calc(10);
+  }
+
+  @include view-s-up() {
+    .participant-bio__header {
+      margin-bottom: rem-calc(30);
+    }
+    .author-avatar {
+      margin-bottom: rem-calc(30);
+      width: span(2 wider of 12);
+    }
+    .participant-bio__footer {
+      margin-top: rem-calc(30);
+    }
+  }
+
+  @include view-m-up() {
+    .participant-bio__header {
+      margin-bottom: rem-calc(40);
+    }
+    .author-avatar {
+      margin-bottom: rem-calc(40);
+      width: span(2 of 12);
+      min-width: rem-calc(180);
+    }
+    .participant-bio__footer {
+      margin-top: rem-calc(40);
+    }
+  }
+}
+
+// address the overlay layer
+.overlay--participant-bio {
+  .overlay__inner {
+    width: span(12 of 12);
+  }
+
+  @include view-m-up() {
+    .overlay__inner {
+      width: span(6 of 12);
+    }
+  }
+}
