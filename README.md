@@ -14,6 +14,14 @@ To start development
 2. run: npm run start
 
 ### Deploying
+If changes were made in the cms:
+
+1. run: npm run download:all
+
+Deploying:
+1. run: npm run build
+2. push changes to the remote main branch
+
 By pushing the changes to the "main" branch an automatic deploy is started and everything inside the /build folder is pushed
 to AWS -> https://book.mozillafestival.org/
 
